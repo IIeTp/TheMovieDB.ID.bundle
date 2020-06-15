@@ -1,7 +1,7 @@
 [
    {
        "id":"xattr_id",
-       "label":"Prefer FileBot Xattr Metadata for matching, if present.",
+       "label":"Prefer FileBot Xattr Metadata for matching, if present",
        "type":"bool",
        "default":"false"
     }, 
