@@ -599,7 +599,7 @@ def PerformTMDbMovieUpdate(metadata_id, lang, existing_metadata):
 ####################################################################################################
 class id_movieAgent(Agent.Movies):
 
-  name = 'TheMovieDB.ID'
+  name = 'The Movie Database.ID'
   agent_type = 'movie'
   languages = LANGUAGES
   primary_provider = True
@@ -622,7 +622,7 @@ class id_movieAgent(Agent.Movies):
 ####################################################################################################
 class id_movieAgent(Agent.TV_Shows):
 
-  name = 'TheMovieDB.ID'
+  name = 'The Movie Database.ID'
   agent_type = 'tv'
   languages = LANGUAGES
   primary_provider = True
