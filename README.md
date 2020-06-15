@@ -13,5 +13,5 @@ Pattern: tmdb-00000 or tt00000
 * `\tmdb-19995\1.mkv` = `Avatar (2009)`                                   
 * `\we\like\what\tmdb-19995\we\do\Total Recall (1990).m2ts` = `Avatar (2009)`
 * `\Scarface (1983) tmdb-19995.mp4` = `Avatar (2009)`                     
-* `\Avengers. Endgame (2019) tt0499549.avi` = `Avatar (2009)`
+* `\Avengers. Endgame (2019) tt0499549.avi` = `Avatar (2009)`       
 Note: standard plex scanners ignore the BDMV folder, so if you store movies in the BDAV/BDMV folder structure, you will have to use a third-party scanner, for example [FileBot Xattr Metadata](https://github.com/filebot/plex-agents) *(this scanner can only work with xattr metadata)*.
