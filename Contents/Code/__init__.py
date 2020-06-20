@@ -57,6 +57,9 @@ def Start():
   if Prefs['auto_update'] != 'none':
     Thread.CreateTimer(int(Prefs['update_interval'] or 1)*60, Updater.auto_update_thread, core=Core, pref=Prefs)
 
+def ValidatePrefs():
+  Log('ValidatePrefs function call')
+
 ####################################################################################################
 @expose
 def GetImdbId(tmdb_id, lang='en'):
