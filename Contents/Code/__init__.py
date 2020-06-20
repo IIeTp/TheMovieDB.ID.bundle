@@ -5,6 +5,7 @@
 # apiary.io debugging URL
 # BASE_URL = 'http://private-ad99a-themoviedb.apiary.io/3'
 import re
+from updater import Updater
 from utils import *
 
 FileBotMod = filebot_is(Prefs['xattr_id'])
@@ -53,8 +54,8 @@ LANGUAGES = [
 
 ####################################################################################################
 def Start():
-
-  pass
+  if Prefs['auto_update'] != 'none':
+    Thread.CreateTimer(int(Prefs['update_interval'] or 1)*60, Updater.auto_update_thread, core=Core, pref=Prefs)
 
 ####################################################################################################
 @expose
