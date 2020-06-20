@@ -24,18 +24,6 @@
         "default": "false"
     },
     {
-       "id":"auto_update",
-       "label":"Auto update plugin",
-       "type":"bool",
-       "default":"true"
-    }, 
-    {
-       "id": "update_interval",
-       "label": "Update check interval (in minutes)",
-       "type": "text",
-       "default": "60"
-    },
-    {
         "id": "country",
         "label": "Country (used for release date and content rating)",
         "type": "enum",
@@ -92,5 +80,17 @@
             "Venezuela"
         ],
         "default": "United States"
+    },
+    {
+       "id":"auto_update",
+       "label":"Auto update plugin",
+       "type":"bool",
+       "default":"true"
+    }, 
+    {
+       "id": "update_interval",
+       "label": "Update check interval (in minutes)",
+       "type": "text",
+       "default": "60"
     }
 ]
