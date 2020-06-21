@@ -11,6 +11,7 @@ from utils import *
 FileBotMod = filebot_is(Prefs['xattr_id'])
 if FileBotMod != False:
   from filebot import *
+  Log('FileBot Xattr is founded')
   FileBot = True
 else:
   FileBot = False
@@ -54,8 +55,8 @@ LANGUAGES = [
 
 ####################################################################################################
 def Start():
-  if Prefs['auto_update'] != 'none':
-    Thread.CreateTimer(int(Prefs['update_interval'] or 1)*60, Updater.auto_update_thread, core=Core, pref=Prefs)
+  if Prefs['auto_update'] == True:
+    Thread.CreateTimer(3600, Updater.auto_update_thread, core=Core)
 
 def ValidatePrefs():
   Log('ValidatePrefs function call')

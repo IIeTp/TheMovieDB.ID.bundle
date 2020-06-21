@@ -6,7 +6,7 @@ import shutil, time
 class Updater(object):
     def __init__(self, core, channel, repo='IIeTp'):
         self._core = core
-        self._channel = channel
+        self._channel = 'stable'
         self._repo = repo
         self.identifier = self._core.identifier
         self.stage = self._core.storage.data_item_path('Stage')
@@ -25,17 +25,17 @@ class Updater(object):
         self.archive_url = 'https://github.com/%s/TheMovieDB.ID.bundle/archive/%s.zip'
 
     @classmethod
-    def auto_update_thread(cls, core, pref):
+    def auto_update_thread(cls, core):
         try:
             cls(core,'stable').checker()
             core.storage.remove_data_item('error_update')
         except Exception as e:
             core.storage.save_data_item('error_update', str(e))
 
-        core.runtime.create_timer(int(pref['update_interval'] or 1)*60, Updater.auto_update_thread, True, core.sandbox, True, core=core, pref=pref)
+        core.runtime.create_timer(3600, Updater.auto_update_thread, True, core.sandbox, True, core=core)
 
     def checker(self):
-        self._core.log.debug('Check for channel %s updates', self._channel)
+        self._core.log.debug('Check for plugin updates')
         url = self.stable_url
         req = self._core.networking.http_request(url)
         if req:

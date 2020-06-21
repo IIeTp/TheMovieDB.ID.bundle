@@ -86,11 +86,5 @@
        "label":"Auto update plugin",
        "type":"bool",
        "default":"true"
-    }, 
-    {
-       "id": "update_interval",
-       "label": "Update check interval (in minutes)",
-       "type": "text",
-       "default": "60"
-    }
+    } 
 ]
