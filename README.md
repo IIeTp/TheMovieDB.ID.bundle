@@ -3,7 +3,7 @@ This agent is based on the original **TheMovieDB** plugin. For the improvement o
 
 The main differences from the original version:
 - Added the ability to use the ID from movie or TV show, instead of the name or in addition to it.
-- Added the ability to use ID from [FileBot Xattr Metadata](https://github.com/filebot/plex-agents), for support, installation of this plugin is required.
+- Added the ability to use ID from [FileBot Xattr Metadata](https://github.com/IIeTp/Filebot-Xattr-Scanners-ID), for support, installation of this plugin is required.
 
 ## Examples
 [Avatar](https://www.themoviedb.org/movie/19995-avatar) tmdb-ID = 19995, [Avatar](https://www.imdb.com/title/tt0499549/) imdb-id = tt0499549
