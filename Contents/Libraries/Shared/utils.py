@@ -7,19 +7,21 @@ def import_ext_module(mod_path, mod_name):
     module_path = os.path.realpath(os.path.join(mod_path))
     sys.path.append(module_path)
     my_mod = importlib.import_module(mod_name[:(len(mod_name)-3)])
-#    log.debug('Imported module %s', str(my_mod))
     return my_mod
-  # else:
-    # log.debug('EXT Module \'%s\' NOT found!!!', mod_name)
+  else:
     return False
 
 def filebot_is(prefs_is):
   if prefs_is == True:
-    import_mod = import_ext_module('../../../Scanners/Common/', 'filebot.py')
+    import_mod = import_ext_module('../../../Scanners/Common/', 'filebotid.py')
     if import_mod != False:
       return import_mod
     else:
-      return False
+      import_mod = import_ext_module('../../../Scanners/Common/', 'filebot.py')
+      if import_mod != False:
+        return import_mod
+      else:
+        return False
   else:
     return False
 

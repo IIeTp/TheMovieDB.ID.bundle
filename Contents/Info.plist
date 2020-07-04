@@ -8,7 +8,7 @@
 	<string>
 		This agent is based on the original TheMovieDB plugin for Plex.&lt;br/&gt;
 		Added the ability to use IDs for matching in the name of a file or folder (for TV shows).&lt;br/&gt;
-		Added the ability to use metadata from the &lt;a href=&quot;https://github.com/filebot/plex-agents&quot;&gt;Xattr plugin&lt;/a&gt;.
+		Added the ability to use metadata from the &lt;a href=&quot;https://github.com/IIeTp/Filebot-Xattr-Scanner-ID&quot;&gt;Filebot-Xattr-Scanner-ID scanner&lt;/a&gt;.
 		&lt;br/&gt;&lt;br/&gt;More on &lt;a href=&quot;https://github.com/IIeTp/TheMovieDB.ID&quot;&gt;GitHub&lt;/a&gt;.
 	</string>
 	<key>PlexFrameworkVersion</key>

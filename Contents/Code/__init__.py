@@ -248,10 +248,10 @@ def PerformTMDbMovieSearch(results, media, lang, manual, get_imdb_id=False):
                              id=id,
                              name=tmdb_dict['title'],
                              year=int(tmdb_dict['release_date'].split('-')[0]),
-                             score=100,
+                             score=350,
                              lang=lang)
       else:
-          id_movie = find_id(r'(?<=tmdb)\d+|(?<=tmdb-)\d+|(?<=tmdb )\d+|(?<=tmdb_)\d+', mid + ' ' + media.name + ' ' + file)
+          id_movie = find_id(r'(?<=tmdb)\d+|(?<=tmdb-)\d+|(?<=tmdb )\d+|(?<=tmdb_)\d+', 'tmdb-' + mid + ' ' + media.name + ' ' + file)
           if id_movie is not None:
             Log('Searching movie \"'  + media.name + '\" By TMDB ID \'' + id_movie + '\'')
             tmdb_dict = GetTMDBJSON(url=TMDB_MOVIE % (id_movie, lang))
@@ -260,14 +260,14 @@ def PerformTMDbMovieSearch(results, media, lang, manual, get_imdb_id=False):
                 if 'imdb_id' in tmdb_dict and RE_IMDB_ID.search(tmdb_dict['imdb_id']):
                   id = str(tmdb_dict['imdb_id'])
                 else:
-                  id = GetImdbId(tmdb_dict['id'], lang) or tmdb_dict['id']
+                  id = id_movie
               else:
-                id = tmdb_dict['id']
+                id = id_movie
               AppendSearchResult(results=results,
                                  id=id,
                                  name=tmdb_dict['title'],
                                  year=int(tmdb_dict['release_date'].split('-')[0]),
-                                 score=100,
+                                 score=350,
                                  lang=lang)
     # End MOD_ID
 
