@@ -8,8 +8,7 @@ import re
 from updater import Updater
 from utils import *
 
-FileBotMod = filebot_is(Prefs['xattr_id'])
-if FileBotMod != False:
+if module_add_syspath('../../../Scanners/Common/', 'filebot.py') == True:
   from filebot import *
   Log('FileBot Xattr is founded')
   FileBot = True
@@ -234,7 +233,7 @@ def PerformTMDbMovieSearch(results, media, lang, manual, get_imdb_id=False):
   # Looking for tmdb or imdb ID in the movie name, file name, FileBot XATTR metadata, and use it.
     if media.filename:
       file = media.items[0].parts[0].file
-      attr = xattr_metadata(file) if FileBot == True else None
+      attr = xattr_metadata(file) if FileBot == True and Prefs['xattr_id'] == True else None
       mid = movie_id(attr) if attr is not None else None
       if mid is None:
         mid = ''
