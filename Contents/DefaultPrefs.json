@@ -18,10 +18,10 @@
         "default": "false"
     },
     {
-		"id": "personal_api_key",
-		"label": "Personal API Key",
-		"type": "text",
-		"default": ""
+	"id": "personal_api_key",
+	"label": "Personal API Key",
+	"type": "text",
+	"default": ""
     },
     {
         "id": "collections",
