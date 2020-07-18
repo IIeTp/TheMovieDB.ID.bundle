@@ -7,10 +7,11 @@
 import re
 from updater import Updater
 from utils import *
+from meta_comb import *
 
 if module_add_syspath('../../../Scanners/Common/', 'filebot.py') == True:
   from filebot import *
-  Log('FileBot Xattr is founded')
+  Log('FileBot Xattr is found')
   FileBot = True
 else:
   FileBot = False
@@ -38,6 +39,9 @@ BACKDROP_SCORE_RATIO = .3
 STILLS_SCORE_RATIO = .3
 RE_IMDB_ID = Regex('^tt\d{7,10}$')
 
+CINE_ROOT = 'https://api.cinematerial.com'
+CINE_JSON = '%s/1/request.json?imdb_id=%%s&key=plex&secret=%%s&width=720&thumb_width=100.' % CINE_ROOT
+CINE_SECRET = '157de27cd9815301d29ab8dcb2791bdf'
 # TMDB does not seem to have an official set of supported languages.  Users can register and 'translate'
 # any movie to any ISO 639-1 language.  The following is a realistic list from a popular title.
 # This agent falls back to English metadata and sorts out foreign artwork to to ensure the best
@@ -609,13 +613,49 @@ class id_movieAgent(Agent.Movies):
   primary_provider = True
   accepts_from = ['com.plexapp.agents.localmedia']
 
+  
+  def add_poster(self, metadata, secret, poster, index):
+
+   image_url = poster['image_location']
+   thumb_url = poster['thumbnail_location']
+   Log('Adding new poster: %s' % image_url)
+   metadata.posters[image_url] = Proxy.Preview(HTTP.Request(thumb_url), sort_order=index)
+   return image_url
+
   def search(self, results, media, lang, manual):
 
     PerformTMDbMovieSearch(results, media, lang, manual)
 
   def update(self, metadata, media, lang):
-
+    check_metapref(Prefs)
     metadata_dict = PerformTMDbMovieUpdate(metadata.id, lang, metadata)
+
+#####################################################################################
+    if Prefs['imdb_posters'] == True:
+        imdb_code = metadata.id
+        secret = Cipher.Crypt('%s%s' % (imdb_code, CINE_SECRET), 'rand0mn3ss123')
+        json_obj = JSON.ObjectFromURL(CINE_JSON % (imdb_code, secret), sleep=1.0)
+        valid_names = list()
+
+        if 'errors' not in json_obj and 'posters' in json_obj:
+            i = 0
+
+            # Look through the posters for ones with language matches.
+            for poster in json_obj['posters']:
+                poster_language = poster['language'].lower().replace('us', 'en').replace('uk', 'en').replace('ca', 'en')
+                if lang == poster_language:
+                    Log('Adding matching language poster for language: %s', poster['language'])
+                    valid_names.append(self.add_poster(metadata, secret, poster, i))
+                    i += 1
+
+            # If we didn't find a language match, add the first foreign one.
+            if i == 0 and len(json_obj['posters']) > 0:
+                Log('Falling back to foreign language poster with language: %s', json_obj['posters'][0]['language'])
+                valid_names.append(self.add_poster(metadata, secret, json_obj['posters'][0], i))
+
+        metadata.posters.validate_keys(valid_names)
+
+########################################################################################
 
     if metadata_dict is None:
       Log('TMDb was unable to get any metadata for %s (lang = %s)' % (metadata.id, lang))
@@ -1051,3 +1091,4 @@ class FakePrimaryMetadataObj():
 
   def __init__(self, id):
     self.id = id
+

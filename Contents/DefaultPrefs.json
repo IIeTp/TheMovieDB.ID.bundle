@@ -1,10 +1,22 @@
 [
     {
-       "id":"xattr_id",
-       "label":"Prefer FileBot Xattr Metadata for matching, if present",
-       "type":"bool",
-       "default":"true"
+        "id": "xattr_id",
+        "label": "Prefer FileBot Xattr Metadata for matching, if present",
+        "type": "bool",
+        "default": "true"
     }, 
+    {
+        "id": "imdb_posters",
+        "label": "Fetch posters from CineMaterial",
+        "type": "bool",
+        "default": "true"
+    },
+    {
+        "id": "fanart",
+        "label": "Fetch posters from Fanart.tv",
+        "type": "bool",
+        "default": "false"
+    },
     {
         "id": "collections",
         "label": "Use collection info from The Movie Database",
@@ -82,9 +94,9 @@
         "default": "United States"
     },
     {
-       "id":"auto_update",
-       "label":"Auto update plugin",
-       "type":"bool",
-       "default":"true"
+        "id": "auto_update",
+        "label": "Auto update plugin",
+        "type": "bool",
+        "default": "true"
     } 
 ]
