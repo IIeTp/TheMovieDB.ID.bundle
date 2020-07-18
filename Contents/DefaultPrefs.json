@@ -18,6 +18,12 @@
         "default": "false"
     },
     {
+		"id": "personal_api_key",
+		"label": "Personal API Key",
+		"type": "text",
+		"default": ""
+    },
+    {
         "id": "collections",
         "label": "Use collection info from The Movie Database",
         "type": "bool",
