@@ -5,6 +5,12 @@ The main differences from the original version:
 - Added the ability to use the ID from movie or TV show, instead of the name or in addition to it.
 - Added the ability to use ID from [FileBot Xattr Metadata](https://github.com/IIeTp/Filebot-Xattr-Scanners-ID), for support, installation of this plugin is required.
 
+Added support for the following third party plugins:
+- CineMaterial
+- Fanart.tv
+- OpenSubtitles.org
+- Plex Movie
+
 ## Examples
 [Avatar](https://www.themoviedb.org/movie/19995-avatar) tmdb-ID = 19995, [Avatar](https://www.imdb.com/title/tt0499549/) imdb-id = tt0499549
 It does not matter what the name of the file is, if tmdb-ID is specified in the filepath, then the information will be bound to the ID.
