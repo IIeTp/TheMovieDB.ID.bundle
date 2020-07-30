@@ -23,7 +23,7 @@ Pattern: tmdb-00000 or tt00000
 Note: standard plex scanners ignore the BDMV folder, so if you store movies in the BDAV/BDMV folder structure, you will have to use a third-party scanner, for example [FileBot Xattr Metadata](https://github.com/filebot/plex-agents) *(this scanner can only work with xattr metadata)*.
 
 ## Install
-1. If you want to install the agent manually or if you are interested in the source code, you can download the latest copy of the agent from Github: [releases](https://github.com/IIeTp/TheMovieDB.ID.bundle/releases)
+1. If you want to install the agent manually or if you are interested in the source code, you can download the latest copy of the agent from Github: [releases](https://github.com/IIeTp/TheMovieDB.ID.bundle/releases/latest)
 2. Move TheMovieDB.ID.bundle to the default plugins folder. [FAQ](https://support.plex.tv/articles/202915258-where-is-the-plex-media-server-data-directory-located/)            
    `%LOCALAPPDATA%\Plex Media Server\Plug-ins` for Windows Vista/7/8/10
    
