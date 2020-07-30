@@ -10,9 +10,9 @@ from updater import Updater
 from utils import *
 
 Log.Info("The Movie Database.ID Agent - CPU: {}, OS: {}".format(Platform.CPU, Platform.OS))
-PLEXBINPATH = plexpathbin(re)
-PLEXPLUGINS = PLEXBINPATH + '\\Resources\\' + plexporiginpluginspath(PLEXBINPATH)
-PLEXHOME = Core.app_support_path
+PLEXHOME = os.path.abspath(os.path.join(Core.app_support_path))
+PLEXPLUGINS = (os.path.split(os.path.split(os.path.split(os.path.split(os.path.split(Core.framework_path)[0])[0])[0])[0])[0])
+PLEXBINPATH = os.path.split(os.path.split(PLEXPLUGINS)[0])[0]
 Log.Info ("Plex binaries path: " +  PLEXBINPATH)
 Log.Info ("Plex agents path: " +  PLEXPLUGINS)
 Log.Info ("Plex Home path: " +  PLEXHOME)
@@ -121,7 +121,7 @@ def GetTMDbMetadata(id, lang):
   return PerformTMDbMovieUpdate(id, lang)
 
 ####################################################################################################
-def GetTMDBJSON(url, cache_time=CACHE_1MONTH):
+def GetTMDBJSON(url, cache_time=CACHE_1DAY):
 
   tmdb_dict = None
 
@@ -370,7 +370,7 @@ def PerformTMDbMovieUpdate(metadata_id, lang, existing_metadata):
 
   metadata = dict(id=metadata_id)
 
-  config_dict = GetTMDBJSON(url=TMDB_CONFIG, cache_time=CACHE_1WEEK * 2)
+  config_dict = GetTMDBJSON(url=TMDB_CONFIG, cache_time=CACHE_1DAY)
   if config_dict is None or 'images' not in config_dict or 'base_url' not in config_dict['images']:
     config_dict = dict(images=dict(base_url=''))
 
@@ -747,7 +747,7 @@ class id_movieAgent(Agent.TV_Shows):
 
   def update(self, metadata, media, lang):
     Log('Begin Series MetaUpdate')
-    config_dict = GetTMDBJSON(url=TMDB_CONFIG, cache_time=CACHE_1WEEK * 2)
+    config_dict = GetTMDBJSON(url=TMDB_CONFIG, cache_time=CACHE_1DAY)
     if config_dict is None or 'images' not in config_dict or 'base_url' not in config_dict['images']:
       config_dict = dict(images=dict(base_url=''))
 
